@@ -42,11 +42,20 @@ body {
 .filters-panel, .overview-panel, .rates-panel { border: 1px solid var(--line); background: rgba(24, 43, 68, 0.84); box-shadow: 0 18px 50px rgba(3, 10, 21, 0.18); }
 .filters-panel { padding: 23px 20px 26px; border-radius: 16px; }
 .field-label { display: block; margin: 0 0 8px; color: #d8e2ef; font-size: 12px; font-weight: 600; }
-.field-control, .input-prefix { width: 100%; height: 38px; margin: 0 0 21px; border: 1px solid rgba(156, 178, 205, 0.18); border-radius: 8px; background: #253852; color: var(--text); font: inherit; font-size: 13px; outline: none; }
-select.field-control { padding: 0 11px; }
+.field-control, .input-prefix { width: 100%; height: 38px; margin: 0 0 21px; border: 1px solid rgba(156, 178, 205, 0.18); border-radius: 8px; background: #253852; color: var(--text); font: inherit; font-size: 13px; outline: none; transition: border-color 160ms ease, box-shadow 160ms ease; }
+select.field-control { padding: 0 11px; cursor: pointer; }
 input.field-control { padding: 0 11px; }
+.field-control:focus, .input-prefix:focus-within { border-color: #9eb9d9; box-shadow: 0 0 0 3px rgba(158, 185, 217, 0.16); }
+.field-help { display: block; margin: -14px 0 18px; color: var(--muted); font-size: 10px; line-height: 1.35; }
 .input-prefix { display: flex; align-items: center; padding-left: 11px; color: #93a5bc; }
 .input-prefix input { min-width: 0; flex: 1; height: 100%; padding: 0 10px; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 13px; outline: none; }
+.input-prefix input::-webkit-inner-spin-button, .input-prefix input::-webkit-outer-spin-button { margin: 0; }
+.form-summary { margin-top: 2px; padding: 13px 12px; border: 1px solid rgba(156, 178, 205, 0.16); border-radius: 9px; background: rgba(8, 20, 37, 0.26); }
+.summary-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #dce7f4; font-size: 11px; font-weight: 700; }
+.summary-status { color: #a9d3bb; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: .6px; }
+.summary-status.is-invalid { color: #e6a6a6; }
+.form-summary p { margin: 8px 0 4px; color: var(--text); font-size: 11px; line-height: 1.35; }
+.form-summary > span { display: block; color: var(--muted); font-size: 10px; line-height: 1.4; }
 
 .content-area { display: flex; min-width: 0; flex-direction: column; gap: 20px; }
 .overview-panel { display: grid; grid-template-columns: minmax(0, 1fr) 228px; gap: 26px; min-height: 396px; padding: 20px 20px 20px 24px; border-radius: 16px; }
