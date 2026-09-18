@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LeadPredictor campaign dashboard foundation">
+  <title>LeadPredictor Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="dashboard-shell">
+    <aside class="sidebar" aria-label="Campaign settings">
+      <div class="brand-mark" aria-label="LeadPredictor home">
+        <span class="brand-icon" aria-hidden="true">◆</span>
+        <span>Lead<span>Predictor</span></span>
+      </div>
+
+      <form class="filters-panel">
+        <label class="field-label" for="language">Language</label>
+        <select class="field-control" id="language" name="language">
+          <option>🇺🇸  English</option>
+        </select>
+
+        <label class="field-label" for="currency">Currency</label>
+        <select class="field-control" id="currency" name="currency">
+          <option>$  US Dollar</option>
+        </select>
+
+        <label class="field-label" for="campaign-start">Campaign Start</label>
+        <input class="field-control" id="campaign-start" type="text" value="08-May-2026">
+
+        <label class="field-label" for="campaign-end">Campaign End</label>
+        <input class="field-control" id="campaign-end" type="text" value="04-Nov-2026">
+
+        <label class="field-label" for="total-revenue">Total Revenue</label>
+        <div class="input-prefix"><span>$</span><input id="total-revenue" type="text" value="10000"></div>
+
+        <label class="field-label" for="order-value">Avg. Order Value</label>
+        <div class="input-prefix"><span>$</span><input id="order-value" type="text" value="1000"></div>
+      </form>
+    </aside>
+
+    <section class="content-area" aria-label="Lead campaign overview">
+      <section class="overview-panel">
+        <div class="chart-panel">
+          <div class="chart-heading">
+            <span class="eyebrow">Campaign performance</span>
+            <h1>Monthly lead forecast</h1>
+          </div>
+          <div class="chart-area" aria-label="Monthly lead forecast chart">
+            <div class="y-axis-label">Months</div>
+            <div class="chart-grid">
+              <div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div>
+              <div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div>
+              <div class="bar-row"><span>1</span><div class="bar bar-one"><i></i></div></div>
+              <div class="bar-row"><span>2</span><div class="bar bar-two"><i></i></div></div>
+              <div class="bar-row"><span>3</span><div class="bar bar-three"><i></i></div></div>
+              <div class="bar-row"><span>4</span><div class="bar bar-four"><i></i></div></div>
+              <div class="bar-row"><span>5</span><div class="bar bar-five"><i></i></div></div>
+              <div class="bar-row"><span>6</span><div class="bar bar-six"><i></i></div></div>
+            </div>
+            <div class="x-axis"><span>0 people</span><span>20 people</span><span>40 people</span><span>60 people</span><span>80 people</span><span>100 people</span><span>120 people</span></div>
+            <div class="chart-tooltip"><strong>Month #3</strong><span>Prospects: 63</span><span>Leads: 13</span><span>Customers: 5</span></div>
+          </div>
+        </div>
+
+        <div class="metrics-stack">
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-icon">▣</span><h2>Prospects</h2><strong>100%</strong></div>
+            <p>125</p><div class="metric-progress"><span style="width: 100%"></span></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-icon">●</span><h2>Leads</h2><strong>20%</strong></div>
+            <p>25</p><div class="metric-progress"><span style="width: 20%"></span></div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-icon">★</span><h2>Customers</h2><strong>8%</strong></div>
+            <p>10</p><div class="metric-progress"><span style="width: 8%"></span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="rates-panel" aria-label="Response rates">
+        <div class="rate-control"><div class="rate-label"><span>Lead Response Rate</span><output>40.00%</output></div><input type="range" min="0" max="100" value="40"></div>
+        <div class="rate-control"><div class="rate-label"><span>Prospect Response Rate</span><output>20.00%</output></div><input type="range" min="0" max="100" value="20"></div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
