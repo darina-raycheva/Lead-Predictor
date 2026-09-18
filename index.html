@@ -53,33 +53,33 @@
           </div>
           <div class="chart-area" aria-label="Monthly lead forecast chart">
             <div class="y-axis-label">Months</div>
-            <div class="chart-grid">
+            <div class="chart-grid" role="list" aria-label="Monthly forecast values">
               <div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div>
               <div class="grid-line"></div><div class="grid-line"></div><div class="grid-line"></div>
-              <div class="bar-row"><span>1</span><div class="bar bar-one"><i></i></div></div>
-              <div class="bar-row"><span>2</span><div class="bar bar-two"><i></i></div></div>
-              <div class="bar-row"><span>3</span><div class="bar bar-three"><i></i></div></div>
-              <div class="bar-row"><span>4</span><div class="bar bar-four"><i></i></div></div>
-              <div class="bar-row"><span>5</span><div class="bar bar-five"><i></i></div></div>
-              <div class="bar-row"><span>6</span><div class="bar bar-six"><i></i></div></div>
+              <button class="bar-row" type="button" data-month="1" role="listitem" aria-label="Month 1 forecast"><span>1</span><span class="bar"><i></i></span></button>
+              <button class="bar-row" type="button" data-month="2" role="listitem" aria-label="Month 2 forecast"><span>2</span><span class="bar"><i></i></span></button>
+              <button class="bar-row" type="button" data-month="3" role="listitem" aria-label="Month 3 forecast"><span>3</span><span class="bar"><i></i></span></button>
+              <button class="bar-row" type="button" data-month="4" role="listitem" aria-label="Month 4 forecast"><span>4</span><span class="bar"><i></i></span></button>
+              <button class="bar-row" type="button" data-month="5" role="listitem" aria-label="Month 5 forecast"><span>5</span><span class="bar"><i></i></span></button>
+              <button class="bar-row" type="button" data-month="6" role="listitem" aria-label="Month 6 forecast"><span>6</span><span class="bar"><i></i></span></button>
             </div>
             <div class="x-axis"><span>0 people</span><span>20 people</span><span>40 people</span><span>60 people</span><span>80 people</span><span>100 people</span><span>120 people</span></div>
-            <div class="chart-tooltip"><strong>Month #3</strong><span>Prospects: 63</span><span>Leads: 13</span><span>Customers: 5</span></div>
+            <div class="chart-tooltip" id="chart-tooltip" role="status"><strong>Month #3</strong><span>Prospects: 63</span><span>Leads: 13</span><span>Customers: 5</span></div>
           </div>
         </div>
 
         <div class="metrics-stack">
           <article class="metric-card">
-            <div class="metric-top"><span class="metric-icon">▣</span><h2>Prospects</h2><strong>100%</strong></div>
-            <p>125</p><div class="metric-progress"><span style="width: 100%"></span></div>
+            <div class="metric-top"><span class="metric-icon">▣</span><h2>Prospects</h2><strong id="prospects-rate">100%</strong></div>
+            <p id="prospects-total">125</p><div class="metric-progress"><span id="prospects-progress" style="width: 100%"></span></div>
           </article>
           <article class="metric-card">
-            <div class="metric-top"><span class="metric-icon">●</span><h2>Leads</h2><strong>20%</strong></div>
-            <p>25</p><div class="metric-progress"><span style="width: 20%"></span></div>
+            <div class="metric-top"><span class="metric-icon">●</span><h2>Leads</h2><strong id="leads-rate">20%</strong></div>
+            <p id="leads-total">25</p><div class="metric-progress"><span id="leads-progress" style="width: 20%"></span></div>
           </article>
           <article class="metric-card">
-            <div class="metric-top"><span class="metric-icon">★</span><h2>Customers</h2><strong>8%</strong></div>
-            <p>10</p><div class="metric-progress"><span style="width: 8%"></span></div>
+            <div class="metric-top"><span class="metric-icon">★</span><h2>Customers</h2><strong id="customers-rate">8%</strong></div>
+            <p id="customers-total">10</p><div class="metric-progress"><span id="customers-progress" style="width: 8%"></span></div>
           </article>
         </div>
       </section>
