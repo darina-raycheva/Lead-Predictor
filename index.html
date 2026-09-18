@@ -84,9 +84,16 @@
         </div>
       </section>
 
-      <section class="rates-panel" aria-label="Response rates">
-        <div class="rate-control"><div class="rate-label"><span>Lead Response Rate</span><output>40.00%</output></div><input type="range" min="0" max="100" value="40"></div>
-        <div class="rate-control"><div class="rate-label"><span>Prospect Response Rate</span><output>20.00%</output></div><input type="range" min="0" max="100" value="20"></div>
+      <section class="rates-panel" aria-labelledby="rates-title">
+        <h2 id="rates-title" class="sr-only">Response rates</h2>
+        <div class="rate-control">
+          <div class="rate-label"><label for="lead-response-rate">Lead Response Rate</label><output id="lead-response-output" for="lead-response-rate">40.00%</output></div>
+          <input id="lead-response-rate" name="leadResponseRate" type="range" min="0" max="100" step="1" value="40">
+        </div>
+        <div class="rate-control">
+          <div class="rate-label"><label for="prospect-response-rate">Prospect Response Rate</label><output id="prospect-response-output" for="prospect-response-rate">20.00%</output></div>
+          <input id="prospect-response-rate" name="prospectResponseRate" type="range" min="0" max="100" step="1" value="20">
+        </div>
       </section>
     </section>
   </main>
