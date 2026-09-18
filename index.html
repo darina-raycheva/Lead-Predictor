@@ -19,28 +19,43 @@
         <span>Lead<span>Predictor</span></span>
       </div>
 
-      <form class="filters-panel">
+      <form class="filters-panel" id="campaign-form">
         <label class="field-label" for="language">Language</label>
-        <select class="field-control" id="language" name="language">
-          <option>🇺🇸  English</option>
+        <select class="field-control" id="language" name="language" aria-describedby="language-help">
+          <option value="en">English</option>
+          <option value="bg">Bulgarian</option>
+          <option value="de">German</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
         </select>
+        <small class="field-help" id="language-help">Choose the language used for campaign labels and reports.</small>
 
         <label class="field-label" for="currency">Currency</label>
-        <select class="field-control" id="currency" name="currency">
-          <option>$  US Dollar</option>
+        <select class="field-control" id="currency" name="currency" aria-describedby="currency-help">
+          <option value="USD" data-symbol="$">US Dollar ($)</option>
+          <option value="EUR" data-symbol="€">Euro (€)</option>
+          <option value="GBP" data-symbol="£">British Pound (£)</option>
+          <option value="BGN" data-symbol="лв">Bulgarian Lev (лв)</option>
         </select>
+        <small class="field-help" id="currency-help">All revenue values are shown in the selected currency.</small>
 
         <label class="field-label" for="campaign-start">Campaign Start</label>
-        <input class="field-control" id="campaign-start" type="text" value="08-May-2026">
+        <input class="field-control" id="campaign-start" name="campaignStart" type="date" value="2026-05-08" required>
 
         <label class="field-label" for="campaign-end">Campaign End</label>
-        <input class="field-control" id="campaign-end" type="text" value="04-Nov-2026">
+        <input class="field-control" id="campaign-end" name="campaignEnd" type="date" value="2026-11-04" required>
 
         <label class="field-label" for="total-revenue">Total Revenue</label>
-        <div class="input-prefix"><span>$</span><input id="total-revenue" type="text" value="10000"></div>
+        <div class="input-prefix"><span class="currency-symbol">$</span><input id="total-revenue" name="totalRevenue" type="number" min="0" step="100" value="10000" required></div>
 
         <label class="field-label" for="order-value">Avg. Order Value</label>
-        <div class="input-prefix"><span>$</span><input id="order-value" type="text" value="1000"></div>
+        <div class="input-prefix"><span class="currency-symbol">$</span><input id="order-value" name="orderValue" type="number" min="0" step="50" value="1000" required></div>
+
+        <div class="form-summary" aria-live="polite">
+          <div class="summary-heading"><span>Campaign summary</span><span class="summary-status">Ready</span></div>
+          <p id="campaign-summary">6 months · $10,000 revenue target</p>
+          <span id="campaign-detail">08 May 2026 to 04 Nov 2026 · Average order value: $1,000 · Estimated orders: 10</span>
+        </div>
       </form>
     </aside>
 
