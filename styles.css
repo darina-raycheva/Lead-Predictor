@@ -43,8 +43,9 @@ body {
 .filters-panel { padding: 23px 20px 26px; border-radius: 16px; }
 .field-label { display: block; margin: 0 0 8px; color: #d8e2ef; font-size: 12px; font-weight: 600; }
 .field-control, .input-prefix { width: 100%; height: 38px; margin: 0 0 21px; border: 1px solid rgba(156, 178, 205, 0.18); border-radius: 8px; background: #253852; color: var(--text); font: inherit; font-size: 13px; outline: none; }
-select.field-control { padding: 0 11px; }
+select.field-control { padding: 0 11px; cursor: pointer; }
 input.field-control { padding: 0 11px; }
+.field-control:focus, .input-prefix:focus-within { border-color: #9eb9d9; box-shadow: 0 0 0 3px rgba(158, 185, 217, 0.16); }
 .input-prefix { display: flex; align-items: center; padding-left: 11px; color: #93a5bc; }
 .input-prefix input { min-width: 0; flex: 1; height: 100%; padding: 0 10px; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 13px; outline: none; }
 
