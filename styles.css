@@ -79,8 +79,16 @@ h1 { margin: 4px 0 0; font-size: 20px; letter-spacing: -0.5px; }
 .rates-panel { display: flex; flex-direction: column; gap: 26px; padding: 24px 27px; border-radius: 16px; }
 .rate-control { display: flex; flex-direction: column; gap: 8px; }
 .rate-label { display: flex; justify-content: space-between; color: #e1e8f1; font-size: 12px; }
+.rate-label label { cursor: pointer; }
 .rate-label output { color: #f5f7fb; }
-input[type="range"] { width: 100%; height: 7px; margin: 0; accent-color: #d0d9e5; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0; border: 0; margin: -1px; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+input[type="range"] { width: 100%; height: 16px; padding: 0; margin: 0; appearance: none; cursor: pointer; background: transparent; }
+input[type="range"]::-webkit-slider-runnable-track { height: 7px; border: 1px solid rgba(214, 225, 238, 0.48); border-radius: 999px; background: linear-gradient(to right, #d0d9e5 var(--rate-progress, 0%), rgba(28, 42, 59, 0.8) var(--rate-progress, 0%)); }
+input[type="range"]::-moz-range-track { height: 7px; border: 1px solid rgba(214, 225, 238, 0.48); border-radius: 999px; background: rgba(28, 42, 59, 0.8); }
+input[type="range"]::-moz-range-progress { height: 7px; border-radius: 999px; background: #d0d9e5; }
+input[type="range"]::-webkit-slider-thumb { width: 19px; height: 19px; margin-top: -7px; appearance: none; border: 0; border-radius: 50%; background: #d5dfeb; box-shadow: 0 1px 4px rgba(3, 10, 21, 0.35); }
+input[type="range"]::-moz-range-thumb { width: 19px; height: 19px; border: 0; border-radius: 50%; background: #d5dfeb; box-shadow: 0 1px 4px rgba(3, 10, 21, 0.35); }
+input[type="range"]:focus-visible { outline: 2px solid #c7d8eb; outline-offset: 5px; }
 
 @media (max-width: 900px) { .dashboard-shell { grid-template-columns: 200px minmax(0, 1fr); padding: 20px 16px; } .overview-panel { grid-template-columns: 1fr; } .metrics-stack { display: grid; grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 680px) { .dashboard-shell { display: block; padding: 16px; } .sidebar { margin-bottom: 16px; } .filters-panel { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; } .filters-panel .field-label { margin-top: 2px; } .filters-panel .field-control, .filters-panel .input-prefix { margin-bottom: 12px; } .filters-panel .field-label:nth-of-type(1), .filters-panel .field-label:nth-of-type(2), .filters-panel .field-label:nth-of-type(3), .filters-panel .field-label:nth-of-type(4), .filters-panel .field-label:nth-of-type(5), .filters-panel .field-label:nth-of-type(6) { grid-column: span 1; } .overview-panel { padding: 17px 14px; } .metrics-stack { grid-template-columns: 1fr; } .chart-area { padding-left: 18px; overflow-x: auto; } .chart-grid { min-width: 440px; } .x-axis { min-width: 440px; } }
