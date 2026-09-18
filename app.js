@@ -25,6 +25,7 @@ const forecastRows = document.querySelectorAll('.bar-row[data-month]');
 const chartTooltip = document.querySelector('#chart-tooltip');
 const leadRateInput = document.querySelector('#lead-response-rate');
 const prospectRateInput = document.querySelector('#prospect-response-rate');
+let refreshForecast = () => {};
 
 if (forecastRows.length && chartTooltip) {
   const chartValues = [20, 35, 55, 70, 85, 105];
@@ -46,9 +47,11 @@ if (forecastRows.length && chartTooltip) {
   const getForecast = () => {
     const prospectRate = Number(prospectRateInput?.value) || 0;
     const leadRate = Number(leadRateInput?.value) || 0;
-    const prospects = 125;
-    const leads = Math.round(prospects * prospectRate / 100);
-    const customers = Math.round(leads * leadRate / 100);
+    const revenue = Number(document.querySelector('#total-revenue')?.value) || 0;
+    const orderValue = Number(document.querySelector('#order-value')?.value) || 0;
+    const customers = orderValue > 0 ? Math.ceil(revenue / orderValue) : 0;
+    const leads = leadRate > 0 ? Math.ceil(customers * 100 / leadRate) : 0;
+    const prospects = prospectRate > 0 ? Math.ceil(leads * 100 / prospectRate) : 0;
 
     return { prospects, leads, customers, prospectRate, leadRate };
   };
@@ -56,16 +59,16 @@ if (forecastRows.length && chartTooltip) {
   const showTooltip = (row) => {
     const month = Number(row.dataset.month);
     const forecast = getForecast();
-    const prospects = Math.round(chartValues[month - 1] * forecast.prospects / 125);
-    const leads = Math.round(prospects * forecast.prospectRate / 100);
-    const customers = Math.round(leads * forecast.leadRate / 100);
+    const prospects = forecast.prospects > 0 ? Math.ceil(chartValues[month - 1] * forecast.prospects / 105) : 0;
+    const leads = forecast.prospectRate > 0 ? Math.ceil(prospects * forecast.prospectRate / 100) : 0;
+    const customers = forecast.leadRate > 0 ? Math.floor(leads * forecast.leadRate / 100) : 0;
     chartTooltip.innerHTML = `<strong>Month #${month}</strong><span>Prospects: ${prospects}</span><span>Leads: ${leads}</span><span>Customers: ${customers}</span>`;
   };
 
   const updateForecast = () => {
     const forecast = getForecast();
     const prospectShare = forecast.prospects / maximumProspects * 100;
-    const leadShare = forecast.leadRate ? forecast.leads / forecast.prospects * 100 : 0;
+    const leadShare = forecast.prospects ? forecast.leads / forecast.prospects * 100 : 0;
 
     setMetric('prospects', forecast.prospects, 100);
     setMetric('leads', forecast.leads, forecast.prospectRate);
@@ -95,5 +98,29 @@ if (forecastRows.length && chartTooltip) {
 
   leadRateInput?.addEventListener('input', updateForecast);
   prospectRateInput?.addEventListener('input', updateForecast);
+  refreshForecast = updateForecast;
   updateForecast();
+}
+
+const campaignForm = document.querySelector('#campaign-form');
+
+if (campaignForm) {
+  const currency = document.querySelector('#currency');
+  const start = document.querySelector('#campaign-start');
+  const end = document.querySelector('#campaign-end');
+  const revenue = document.querySelector('#total-revenue');
+  const orderValue = document.querySelector('#order-value');
+  const symbols = document.querySelectorAll('.currency-symbol');
+
+  const updateCampaignFields = () => {
+    const symbol = currency.options[currency.selectedIndex].dataset.symbol;
+    symbols.forEach((element) => { element.textContent = symbol; });
+    end.min = start.value;
+    if (start.value && end.value && end.value < start.value) end.value = start.value;
+    refreshForecast();
+  };
+
+  campaignForm.addEventListener('input', updateCampaignFields);
+  currency.addEventListener('change', updateCampaignFields);
+  updateCampaignFields();
 }
