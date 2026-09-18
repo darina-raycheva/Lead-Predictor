@@ -72,7 +72,8 @@ if (forecastRows.length && chartTooltip) {
 
     setMetric('prospects', forecast.prospects, 100);
     setMetric('leads', forecast.leads, forecast.prospectRate);
-    setMetric('customers', forecast.customers, forecast.prospectRate * forecast.leadRate / 100);
+    const customerRate = forecast.prospects > 0 ? forecast.customers / forecast.prospects * 100 : 0;
+    setMetric('customers', forecast.customers, customerRate);
 
     forecastRows.forEach((row, index) => {
       const bar = row.querySelector('.bar');
@@ -111,6 +112,8 @@ if (campaignForm) {
   const revenue = document.querySelector('#total-revenue');
   const orderValue = document.querySelector('#order-value');
   const symbols = document.querySelectorAll('.currency-symbol');
+
+  campaignForm.addEventListener('submit', (event) => event.preventDefault());
 
   const updateCampaignFields = () => {
     const symbol = currency.options[currency.selectedIndex].dataset.symbol;
