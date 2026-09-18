@@ -24,7 +24,7 @@ Prospects = Leads * 100 / Prospect Response Rate
 
 Results that represent a required minimum quantity are rounded up. This ensures that the forecast does not fall below the requested revenue target.
 
-<img width="1022" height="620" alt="LeadPredictor" src="https://github.com/user-attachments/assets/b4cf2ed6-47f2-42f3-938d-2f133770c1bf" />
+<img width="1804" height="803" alt="Lead-predictor-softuni" src="https://github.com/user-attachments/assets/c3a4dbe7-7fcf-4b42-96c1-24ab7d0bbfbc" />
 
 ## Run locally
 
